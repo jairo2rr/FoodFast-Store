@@ -1,0 +1,46 @@
+html{
+    height: 100%;
+}
+body{
+    font-family: Verdana, sans-serif;
+    background-color: beige;
+    min-height: 100%;
+}
+.contenido{
+    display: grid;
+    grid-template-areas: "img img field";
+    min-height: 100vh;
+}
+
+.img-login{
+    grid-area: img;
+    background-image: url('/img/login/background_login.jpg');
+    background-color: aqua;
+}
+.field-login{
+    grid-area: field;
+    background-color: beige;
+    padding: 5%;
+    height: 100%;
+}
+.contenedor-field{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: rgba(0,0,0,0.2);
+    padding: 3%;
+}
+/* Si el tamaño del dispositivo es un celular o muy pequeño.*/
+@media(min-width: 320px) and (max-width: 767.98px){
+    .img-login{
+        display: none;
+    }
+    .contenido{
+        grid-template-areas: "field field field";
+    }
+}
+
+.recorderSession{
+    display: flex;
+    text-align: left;
+}
