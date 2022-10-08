@@ -9,22 +9,23 @@ body{
 .contenedor{
     height: 100%;
 }
-.navbar-dark{
-    background-color: black;
+
+#navbar-profile{
     border-radius: 0px 0px 10px 10px;
-    display: flex;
-    justify-content: space-between;
-    padding:20px;
-    align-items:center;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
 }
-
 .text-bienvenida > p{
-    color: white;
+    color: black;
     font-style: italic;
 }
-.cuerpo-profile{
-    padding: 20px;
+
+#body-profile{
+    padding: 15px;
     background-color: white;
+}
+
+.navbar-brand{
+    display: flex;
+    justify-content: center;
 }
 

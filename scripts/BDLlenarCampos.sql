@@ -16,3 +16,4 @@ SELECT * FROM permiso;
 SELECT * FROM usuario;
 SELECT * FROM rol;
 SELECT * FROM rol_usuario;
+SELECT * FROM rol AS r INNER JOIN rol_usuario AS ru ON ru.id_rol = r.id_rol INNER JOIN usuario AS u ON u.id_usuario=ru.id_usuario WHERE u.username = "jairo1";

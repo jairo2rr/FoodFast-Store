@@ -20,7 +20,7 @@ public class LoginController {
     @Autowired
     private IUsuarioService userService;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public String showLogin(Model model){
         model.addAttribute("isCorrect", true);
         model.addAttribute("mssg","Rellene los campos");
@@ -30,12 +30,19 @@ public class LoginController {
     @PostMapping("/verify")
     public String verifyLogin(String username, String password , Model model, RedirectAttributes redirect){
         Usuario usuarioFound = userService.searchByUsername(username);
+        String mssg = "El usuario y/o contrasena son incorrectos.";
+        System.out.println(password+",,"+usuarioFound.getPassword());
         if(usuarioFound != null){
-            redirect.addFlashAttribute("usuario",usuarioFound);
-            return "redirect:profile";
+            if(!usuarioFound.getPassword().equals(password)){
+                mssg="Contraseña incorrecta!";
+            }else{
+                redirect.addFlashAttribute("usuario",usuarioFound);
+                return "redirect:/";
+            }
+
         }
         model.addAttribute("isCorrect",false);
-        model.addAttribute("mssg","El usuario y/o contrasena son incorrectos.");
+        model.addAttribute("mssg", mssg);
         return "login/login";
     }
 
@@ -48,19 +55,5 @@ public class LoginController {
     }
 
 
-    @GetMapping("/lista-usuarios")
-    public String listUser(Model model){
-        System.out.println("Ssadsad");
-        List<Usuario> listUsers = userService.listUser();
-        System.out.println("This: "+ listUsers);
 
-        model.addAttribute("titulo","Lista de Usuarios");
-        model.addAttribute("usuarios",listUsers);
-        return "admin/listUsers";
-    }
-
-    @GetMapping("/inicio")
-    public String showInicio(){
-        return "index";
-    }
 }
